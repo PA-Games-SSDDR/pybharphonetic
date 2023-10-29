@@ -34,8 +34,8 @@ Usage
 ::
 
 
-      from pybharphonetic import bhar
-      bhar.parse("kaise ho", language="hn")
+      from pybharphonetic import bharphonetic
+      bharphonetic.parse("kaise ho", language="hn")
 
 
 Overview
@@ -70,8 +70,8 @@ implemented, the parser can be accessed as:
 
 ::
 
-    >>> from pybharphonetic import bhar
-    >>> bhar.parse("kaise ho", language="hn")
+    >>> from pybharphonetic import bharphonetic
+    >>> bharphonetic.parse("kaise ho", language="hn")
 
 Contributing
 ============
