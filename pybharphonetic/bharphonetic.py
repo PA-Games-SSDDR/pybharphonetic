@@ -27,18 +27,62 @@ along with pyhinavrophonetic.  If not, see <http://www.gnu.org/licenses/>.
 
 
 # Imports
-from pyhinavrophonetic.utils import validate
-from pyhinavrophonetic.utils import utf
-from pyhinavrophonetic import config
+import os
+import json
+import io
+from pybharphonetic.utils import validate
+from pybharphonetic.utils import utf
 
 
 
 # Constants
-PATTERNS = config.AVRO_DICT['data']['patterns']
-NON_RULE_PATTERNS = [p for p in PATTERNS if 'rules' not in p]
-RULE_PATTERNS = [p for p in PATTERNS if 'rules' in p]
+LANGUAGE_DICT = {
+    "hn": "hindi",
+    "bn": "bengali"
+}
+BASE_PATH = None
+AVRO_DICT_FILE = None
+AVRO_DICT = None
+AVRO_VOWELS = None
+AVRO_CONSONANTS = None
+AVRO_CASESENSITIVES = None
+AVRO_NUMBERS = None
+PATTERNS = None
+NON_RULE_PATTERNS = None
+RULE_PATTERNS = None
 
-def parse(text):
+
+def load_language_constants(language="hn"):
+    global BASE_PATH
+    global AVRO_DICT_FILE
+    global AVRO_DICT
+    global AVRO_VOWELS
+    global AVRO_CONSONANTS
+    global AVRO_CASESENSITIVES
+    global AVRO_NUMBERS
+    global PATTERNS
+    global NON_RULE_PATTERNS
+    global RULE_PATTERNS
+    # -- Path to current directory
+    BASE_PATH = os.path.dirname(__file__)
+    # -- path to avrodict.json
+    AVRO_DICT_FILE = os.path.abspath(os.path.join(BASE_PATH,
+                                                "resources/avrodict_" + LANGUAGE_DICT[language] + ".json"))
+    # -- Loads json data from avrodict.json
+    AVRO_DICT = json.load(io.open(AVRO_DICT_FILE, encoding='utf-8'))
+    # -- Shortcut to vowels
+    AVRO_VOWELS = set(AVRO_DICT['data']['vowel'])
+    # -- Shortcut to consonants
+    AVRO_CONSONANTS = set(AVRO_DICT['data']['consonant'])
+    # -- Shortcut to case-sensitives
+    AVRO_CASESENSITIVES = set(AVRO_DICT['data']['casesensitive'])
+    # -- Shortcut to number
+    AVRO_NUMBERS = set(AVRO_DICT['data']['number'])
+    PATTERNS = AVRO_DICT['data']['patterns']
+    NON_RULE_PATTERNS = [p for p in PATTERNS if 'rules' not in p]
+    RULE_PATTERNS = [p for p in PATTERNS if 'rules' in p]
+
+def parse(text, language="hn"):
     """Parses input text, matches and replaces using avrodict
 
     If a valid replacement is found, returns the replaced string. If
@@ -51,65 +95,68 @@ def parse(text):
       hinavro.parse("kaise ho")
 
     """
-    # Sanitize text case to meet phonetic comparison standards
-    fixed_text = validate.fix_string_case(utf(text))
-    # prepare output list
-    output = []
-    # cursor end point
-    cur_end = 0
-    # iterate through input text
-    for cur, i in enumerate(fixed_text):
-        # Trap characters with unicode encoding errors
-        try:
-            i.encode('utf-8')
-        except UnicodeDecodeError:
-            uni_pass = False
-        else:
-            uni_pass = True
-        # Default value for match
-        match = {'matched': False}
-        # Check cur is greater than or equals cur_end. If cursor is in
-        # a position that has alread been processed/replaced, we don't
-        # process anything at all
-        if not uni_pass:
-            cur_end = cur + 1
-            output.append(i)
-        elif cur >= cur_end and uni_pass:
-            # Try looking in non rule patterns with current string portion
-            match = match_non_rule_patterns(fixed_text, cur)
-            # Check if non rule patterns have matched
-            if match["matched"]:
-                output.append(match["replaced"])
-                cur_end = cur + len(match["found"])
+    if BASE_PATH is not None:
+        # Sanitize text case to meet phonetic comparison standards
+        fixed_text = validate.fix_string_case(utf(text))
+        # prepare output list
+        output = []
+        # cursor end point
+        cur_end = 0
+        # iterate through input text
+        for cur, i in enumerate(fixed_text):
+            # Trap characters with unicode encoding errors
+            try:
+                i.encode('utf-8')
+            except UnicodeDecodeError:
+                uni_pass = False
             else:
-            # if non rule patterns have not matched, try rule patterns
-                match = match_rule_patterns(fixed_text, cur)
-                # Check if rule patterns have matched
-                if match["matched"]:
-                    # Update cur_end as cursor + length of match found
-                    cur_end =  cur + len(match["found"])
-                    # Process its rules
-                    replaced = process_rules(rules = match["rules"],
-                                             fixed_text = fixed_text,
-                                             cur = cur, cur_end = cur_end)
-                    # If any rules match, output replacement from the
-                    # rule, else output it's default top-level/default
-                    # replacement
-                    if replaced is not None:
-                        # Rule has matched
-                        output.append(replaced)
-                    else:
-                        # No rules have matched
-                        # output common match
-                        output.append(match["replaced"])
-
-            # If none matched, append present cursor value
-            if not match["matched"]:
+                uni_pass = True
+            # Default value for match
+            match = {'matched': False}
+            # Check cur is greater than or equals cur_end. If cursor is in
+            # a position that has alread been processed/replaced, we don't
+            # process anything at all
+            if not uni_pass:
                 cur_end = cur + 1
                 output.append(i)
+            elif cur >= cur_end and uni_pass:
+                # Try looking in non rule patterns with current string portion
+                match = match_non_rule_patterns(fixed_text, cur)
+                # Check if non rule patterns have matched
+                if match["matched"]:
+                    output.append(match["replaced"])
+                    cur_end = cur + len(match["found"])
+                else:
+                # if non rule patterns have not matched, try rule patterns
+                    match = match_rule_patterns(fixed_text, cur)
+                    # Check if rule patterns have matched
+                    if match["matched"]:
+                        # Update cur_end as cursor + length of match found
+                        cur_end =  cur + len(match["found"])
+                        # Process its rules
+                        replaced = process_rules(rules = match["rules"],
+                                                fixed_text = fixed_text,
+                                                cur = cur, cur_end = cur_end)
+                        # If any rules match, output replacement from the
+                        # rule, else output it's default top-level/default
+                        # replacement
+                        if replaced is not None:
+                            # Rule has matched
+                            output.append(replaced)
+                        else:
+                            # No rules have matched
+                            # output common match
+                            output.append(match["replaced"])
 
-    # End looping through input text and produce output
-    return ''.join(output)
+                # If none matched, append present cursor value
+                if not match["matched"]:
+                    cur_end = cur + 1
+                    output.append(i)
+
+        # End looping through input text and produce output
+        return ''.join(output)
+    else:
+        raise ValueError("Language not specified for parsing")
 
 def match_non_rule_patterns(fixed_text, cur=0):
     """Matches given text at cursor position with non rule patterns
