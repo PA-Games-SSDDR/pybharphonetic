@@ -100,18 +100,6 @@ A Python implementation of the popular Bengali phonetic-typing software
 Branch: Master: |Master| | Develop: |Develop|
 
 
-
-Acknowledgements
-================
-
- - Mehdi Hasan Khan for originally developing and maintaining Avro
-   Phonetic
- - Rifat Nabi for porting it to Javascript
- - `Md Enzam Hossain`_ for helping me understand the ins and outs of
-   the Avro dictionary and the way it works
- - `Sarim Khan`_ for writing ibus-avro which helped to clarify my
-   concepts further
-
 License
 =======
 
@@ -135,16 +123,3 @@ Copyright (C) 2013 Kaustav Das Modak <kaustav.dasmodak@yahoo.co.in>.
     along with pyAvroPhonetic.  If not, see <http://www.gnu.org/licenses/>.
 
 The full license text can be found in ``LICENSE``.
-
-.. _Avro Phonetic: http://omicronlab.com
-.. _Mehdi Hasan Khan: https://github.com/omicronlab
-.. _Rifat Nabi: https://github.com/torifat
-.. _jsAvroPhonetic: https://github.com/torifat/jsAvroPhonetic
-.. _PEP 8: http://www.python.org/dev/peps/pep-0008/
-.. _PEP 257: http://www.python.org/dev/peps/pep-0257/
-.. |Master| image:: https://travis-ci.org/kaustavdm/pyAvroPhonetic.png?branch=master
-   :target: https://travis-ci.org/kaustavdm/pyAvroPhonetic
-.. |Develop| image:: https://travis-ci.org/kaustavdm/pyAvroPhonetic.png?branch=develop
-   :target: https://travis-ci.org/kaustavdm/pyAvroPhonetic
-.. _Md Enzam Hossain: https://github.com/ienzam
-.. _Sarim Khan: https://github.com/sarim
