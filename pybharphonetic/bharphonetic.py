@@ -38,7 +38,27 @@ from pybharphonetic.utils import utf
 # Constants
 LANGUAGE_DICT = {
     "hn": "hindi",
-    "bn": "bengali"
+    "bn": "bengali",
+    "as": "assamese",
+    "bd": "bodo",
+    "dg": "dogri",
+    "gj": "gujrati",
+    "kn": "kannada",
+    "ks": "kashmiri",
+    "kon": "konkani",
+    "mai": "maithili",
+    "mal": "malayalam",
+    "man": "manipuri",
+    "mar": "marathi",
+    "nep": "nepali",
+    "odi": "odia",
+    "pun": "punjabi",
+    "sak": "sanskrit",
+    "san": "santhali",
+    "sin": "sindhi",
+    "tam": "tamil",
+    "tel": "telegu",
+    "urd": "urdu"
 }
 BASE_PATH = None
 AVRO_DICT_FILE = None
@@ -82,6 +102,12 @@ def load_language_constants(language="hn"):
     NON_RULE_PATTERNS = [p for p in PATTERNS if 'rules' not in p]
     RULE_PATTERNS = [p for p in PATTERNS if 'rules' in p]
 
+
+def list_languages():
+    for entry in LANGUAGE_DICT:
+        print(entry , "-->", LANGUAGE_DICT[entry])
+
+
 def parse(text, language="hn"):
     """Parses input text, matches and replaces using avrodict
 
@@ -96,6 +122,7 @@ def parse(text, language="hn"):
 
     """
     if BASE_PATH is not None:
+        load_language_constants(language=language)
         # Sanitize text case to meet phonetic comparison standards
         fixed_text = validate.fix_string_case(utf(text))
         # prepare output list
