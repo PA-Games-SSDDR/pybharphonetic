@@ -27,7 +27,7 @@ along with pyAvroPhonetic.  If not, see <http://www.gnu.org/licenses/>.
 
 
 # Imports
-from pyhinavrophonetic import config
+from pybharphonetic import config
 
 
 def is_vowel(text):

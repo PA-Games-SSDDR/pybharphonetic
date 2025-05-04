@@ -1,10 +1,10 @@
 Metadata-Version: 1.0
 Name: pybharphonetic
-Version: 1.0.0
+Version: 1.0.1
 Author: Subrata Sarkar
 Author-email: subrotosarkar32 at gmail com
 Home-page: https://github.com/PA-Games-SSDDR/pybharphonetic
-Download-url: https://github.com/PA-Games-SSDDR/pybharphonetic/downloads
+Download-url: https://github.com/PA-Games-SSDDR/pybharphonetic/releases
 Summary: Python implementation to convert Bharatiya languages to phonetic
 Description: Python implementation to convert Bharatiya languages to phonetic.
         
