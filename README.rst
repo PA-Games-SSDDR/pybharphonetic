@@ -38,6 +38,34 @@ Usage
       bharphonetic.parse("kaise ho", language="hn")
 
 
+Supported Languages
+===================
+
+::
+    
+    "hn": "hindi",
+    "bn": "bengali",
+    "as": "assamese",
+    "bd": "bodo",
+    "dg": "dogri",
+    "gj": "gujrati",
+    "kn": "kannada",
+    "ks": "kashmiri",
+    "kon": "konkani",
+    "mai": "maithili",
+    "mal": "malayalam",
+    "man": "manipuri",
+    "mar": "marathi",
+    "nep": "nepali",
+    "odi": "odia",
+    "pun": "punjabi",
+    "sak": "sanskrit",
+    "san": "santhali",
+    "sin": "sindhi",
+    "tam": "tamil",
+    "tel": "telegu",
+    "urd": "urdu"
+
 Overview
 ========
 
