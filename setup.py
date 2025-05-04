@@ -6,7 +6,7 @@ try:
 
 
     setup(name='pybharphonetic',
-          version='1.0.1',
+          version='1.0.4',
           description='Python implementation to convert Indic languages to phonetic',
           long_description=open('README.rst', 'rt').read(),
           long_description_content_type='text/markdown',

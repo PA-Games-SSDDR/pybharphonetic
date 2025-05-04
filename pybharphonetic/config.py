@@ -5,17 +5,15 @@
 -------------------------------------------------------------------------------
 Copyright (C) 2016 Subrata Sarkar <subrotosarkar32@gmail.com>
 modified by:- Subrata Sarkar <subrotosarkar32@gmail.com>
-original by:- Kaustav Das Modak <kaustav.dasmodak@yahoo.co.in.
-Copyright (C) 2013 Kaustav Das Modak <kaustav.dasmodak@yahoo.co.in.
 
-This file is part of pyhinvrophonetic.
+This file is part of pybharphonetic.
 
-pyAvroPhonetic is free software: you can redistribute it and/or modify
+pybharphonetic is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-pyAvroPhonetic is distributed in the hope that it will be useful,
+pybharphonetic is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -36,7 +34,8 @@ import io
 BASE_PATH = os.path.dirname(__file__)
 # -- path to avrodict.json
 AVRO_DICT_FILE = os.path.abspath(os.path.join(BASE_PATH,
-                                              "resources/avrodict.json"))
+                                              "resources",
+                                              "avrodict_hindi.json"))
 # -- Loads json data from avrodict.json
 AVRO_DICT = json.load(io.open(AVRO_DICT_FILE, encoding='utf-8'))
 # -- Shortcut to vowels

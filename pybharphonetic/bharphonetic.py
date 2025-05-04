@@ -60,6 +60,7 @@ LANGUAGE_DICT = {
     "tel": "telegu",
     "urd": "urdu"
 }
+# keep config defaults
 BASE_PATH = None
 AVRO_DICT_FILE = None
 AVRO_DICT = None
@@ -70,6 +71,7 @@ AVRO_NUMBERS = None
 PATTERNS = None
 NON_RULE_PATTERNS = None
 RULE_PATTERNS = None
+LANG_SELECTED = None
 
 
 def load_language_constants(language="hn"):
@@ -83,6 +85,7 @@ def load_language_constants(language="hn"):
     global PATTERNS
     global NON_RULE_PATTERNS
     global RULE_PATTERNS
+    global LANG_SELECTED
     # -- Path to current directory
     BASE_PATH = os.path.dirname(__file__)
     # -- path to avrodict.json
@@ -101,6 +104,7 @@ def load_language_constants(language="hn"):
     PATTERNS = AVRO_DICT['data']['patterns']
     NON_RULE_PATTERNS = [p for p in PATTERNS if 'rules' not in p]
     RULE_PATTERNS = [p for p in PATTERNS if 'rules' in p]
+    LANG_SELECTED = language
 
 
 def list_languages():
@@ -109,20 +113,22 @@ def list_languages():
 
 
 def parse(text, language="hn"):
-    """Parses input text, matches and replaces using avrodict
+    """Parses input text, matches and replaces using dictionary
 
     If a valid replacement is found, returns the replaced string. If
-    no replacement is found, returns the input text.
+    no replacement is found, returns the input text. Default hindi
 
     Usage:
 
     ::
-      from pyhinavrophonetic import hinavro
-      hinavro.parse("kaise ho")
+      from pybharphonetic import bharphonetic
+      bharphonetic.parse("kaise ho", language="hn")
 
     """
-    if BASE_PATH is not None:
-        load_language_constants(language=language)
+    if language in list(LANGUAGE_DICT.keys()):
+        global LANG_SELECTED
+        if (LANG_SELECTED != language):
+            load_language_constants(language=language)
         # Sanitize text case to meet phonetic comparison standards
         fixed_text = validate.fix_string_case(utf(text))
         # prepare output list
