@@ -1,27 +1,26 @@
-Metadata-Version: 1.1
-Name: pyhinavrophonetic
+Metadata-Version: 1.0
+Name: pybharphonetic
 Version: 1.0.0
 Author: Subrata Sarkar
 Author-email: subrotosarkar32 at gmail com
-Home-page: https://bitbucket.org/SubrataSarkar32/pyhinavrophonetic/
-Download-url: https://bitbucket.org/SubrataSarkar32/pyhinavrophonetic/downloads
-Summary: Python implementation to convert phonetic to hindi
-Description: Python implementation of Avro Phonetic in hindi.
+Home-page: https://github.com/PA-Games-SSDDR/pybharphonetic
+Download-url: https://github.com/PA-Games-SSDDR/pybharphonetic/downloads
+Summary: Python implementation to convert Bharatiya languages to phonetic
+Description: Python implementation to convert Bharatiya languages to phonetic.
         
         -------------------------------------------------------------------------------
         
-        modified by:- Subrata Sarkar <subrotosarkar32@gmail.com>
-        original by:- Kaustav Das Modak <kaustav.dasmodak@yahoo.co.in.
+        original by:- Subrata Sarkar <subrotosarkar32@gmail.com>
         
         
-        This file is part of pyhinavrophonetic.
+        This file is part of pybharphonetic.
         
-        pyhinavrophonetic is free software: you can redistribute it and/or modify
+        pybharphonetic is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation, either version 3 of the License, or
         (at your option) any later version.
         
-        pyhinavrophonetic is distributed in the hope that it will be useful,
+        pybharphonetic is distributed in the hope that it will be useful,
         but WITHOUT ANY WARRANTY; without even the implied warranty of
         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
         GNU General Public License for more details.
@@ -31,15 +30,13 @@ Description: Python implementation of Avro Phonetic in hindi.
         Usage:
         
             ::
-              from pyhinavrophonetic import hinavro
-              hinavro.parse("kaise ho")
-Keywords: phonetic to hindi
+              from pybharphonetic import bharphonetic
+              bharphonetic.parse("kaise ho", language="hn")
+Keywords: Indian Languages
 Requires: simplejson
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
 Classifier: Operating System :: OS Independent
-Classifier: Programming Language :: Python :: 2.5
-Classifier: Programming Language :: Python :: 2.6
-Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3

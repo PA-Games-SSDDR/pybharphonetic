@@ -2,19 +2,19 @@
 
 try:
     from setuptools import setup, find_packages
-    from pyhinavrophonetic import __version__
+    from pybharphonetic import __version__
 
 
-    setup(name='pyhinavrophonetic',
-          version='2.0.2',
-          description='Python implementation to convert phonetic to hindi',
+    setup(name='pybharphonetic',
+          version='1.0.0',
+          description='Python implementation to convert Indic languages to phonetic',
           long_description=open('README.rst', 'rt').read(),
           long_description_content_type='text/markdown',
           author='Subrata Sarkar',
           author_email='subrotosarkar32@gmail.com',
-          url='https://bitbucket.org/SubrataSarkar32/pyhinavrophonetic/',
+          url='https://github.com/PA-Games-SSDDR/pybharphonetic',
           packages=find_packages(),
-          package_data = {'pyhinavrophonetic': ['*.rst', 'resources/*.json']},
+          package_data = {'pybharphonetic': ['*.rst', 'resources/*.json']},
           include_package_data = True,
           license='GNU GPL v3 or later',
           classifiers=[

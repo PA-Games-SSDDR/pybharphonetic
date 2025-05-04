@@ -1,2 +1,2 @@
 include LICENSE *.py *.rst
-recursive-include pyhinavrophonetic *.json *.rst
+recursive-include pybharphonetic *.json *.rst
