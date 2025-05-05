@@ -2,7 +2,7 @@
 
 pybharphonetic
 =================
-Python implementation of the any Indian language to phonetic-typing software
+Python implementation of the any Indian language to phonetic software
 
 License
 =======
@@ -35,7 +35,7 @@ Usage
 
 
       from pybharphonetic import bharphonetic
-      bharphonetic.parse("kaise ho", language="hn")
+      bharphonetic.parse("kese hO?", language="hn")
 
 
 Supported Languages
@@ -63,7 +63,7 @@ Supported Languages
     "san": "santhali",
     "sin": "sindhi",
     "tam": "tamil",
-    "tel": "telegu",
+    "tel": "telugu",
     "urd": "urdu"
 
 Overview
@@ -99,7 +99,7 @@ implemented, the parser can be accessed as:
 ::
 
     >>> from pybharphonetic import bharphonetic
-    >>> bharphonetic.parse("kaise ho", language="hn")
+    >>> bharphonetic.parse("kese hO?", language="hn")
 
 Contributing
 ============

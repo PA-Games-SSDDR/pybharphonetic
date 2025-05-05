@@ -4,9 +4,8 @@ try:
     from setuptools import setup, find_packages
     from pybharphonetic import __version__
 
-
     setup(name='pybharphonetic',
-          version='1.0.4',
+          version=__version__,
           description='Python implementation to convert Indic languages to phonetic',
           long_description=open('README.rst', 'rt').read(),
           long_description_content_type='text/markdown',

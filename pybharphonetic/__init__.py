@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-"""Python implementation of Indian languages to phonetic.
+"""Python implementation of the any Indian language to phonetic software.
 
 -------------------------------------------------------------------------------
-Copyright (C) 2016 Subrata Sarkar <subrotosarkar32@gmail.com>
+Copyright (C) 2023 Subrata Sarkar <subrotosarkar32@gmail.com>
 modified by:- Subrata Sarkar <subrotosarkar32@gmail.com>
 
 This file is part of pybharphonetic.
@@ -23,6 +23,6 @@ along with pybharphonetic.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-__version_info__ = ('1', '0', '4')
+__version_info__ = ('1', '0', '5')
 __version__ = '.'.join(__version_info__)
 
