@@ -1,6 +1,6 @@
-Metadata-Version: 1.0
+Metadata-Version: 1.1
 Name: pybharphonetic
-Version: 1.0.5
+Version: 1.1
 Author: Subrata Sarkar
 Author-email: subrotosarkar32 at gmail com
 Home-page: https://github.com/PA-Games-SSDDR/pybharphonetic
@@ -32,6 +32,15 @@ Description: Python implementation to convert Bharatiya languages to phonetic.
             ::
               from pybharphonetic import bharphonetic
               bharphonetic.parse("kese hO?", language="hn")
+
+
+        Usage:
+        
+            ::
+              from pybharphonetic import bharphonetic
+              bharphonetic.parse("केसे हो?", language="hn-rev")
+
+
 Keywords: Indian Languages
 Requires: simplejson
 Platform: UNKNOWN

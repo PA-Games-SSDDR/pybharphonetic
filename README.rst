@@ -2,7 +2,13 @@
 
 pybharphonetic
 =================
-Python implementation of the any Indian language to phonetic software
+Python implementation of the any Indian language to phonetic software.
+
+New:
+
+Reverse conversion from language to phonetic support at present added for below languages only:
+- hindi
+- bengali
 
 License
 =======
@@ -64,7 +70,9 @@ Supported Languages
     "sin": "sindhi",
     "tam": "tamil",
     "tel": "telugu",
-    "urd": "urdu"
+    "urd": "urdu",
+    "bn-rev": "bengali_reverse",
+    "hn-rev": "hindi_reverse"
 
 Overview
 ========
@@ -101,6 +109,12 @@ implemented, the parser can be accessed as:
     >>> from pybharphonetic import bharphonetic
     >>> bharphonetic.parse("kese hO?", language="hn")
 
+
+::
+    >>> from pybharphonetic import bharphonetic
+    >>> bharphonetic.parse("केसे हो?", language="hn-rev")
+
+
 Contributing
 ============
 
@@ -113,38 +127,3 @@ conventions.
 Also, if you find any bugs, please report them in the Issues queue. As
 always, before you report any new issue, please check that it has not
 been already posted by someone else.
-
-
-Below is license of pyAvroPhonetic from which it has been derived:
-==================================================================
-
-
-
-
-pyhinavrophonetic
-=================
-Python implementation of the Hindi phonetic-typing software
-
-License
-=======
-
-Copyright (C) 2016 Subrata Sarkar <subrtosarkar32@gmail.com>.
-
-::
-
-    This file is part of pyhinavrophonetic.
-
-    pyhinavrophonetic is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    pyhinavrophonetic is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with pyhinavrophonetic. If not, see <http://www.gnu.org/licenses/>.
-
-The full license text can be found in ``LICENSE``.
